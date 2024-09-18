@@ -10,17 +10,10 @@ import sys
 #Reading the input file 
 input_file= pd.read_csv('/Users/sarveshdube/Documents/VR documents/code/filter_CO.csv')
 # display file content
-print(input_file.head)
+#print(input_file.head)
  
 
-def generate_samples_with_adjustments(input_file, num1=10, num2=10):
-    
-
-     
-
-
-
-
+def generate_samples_with_adjustments(input_file, num1=10, num2=10): 
     # Load the input CSV file into a pandas DataFrame
     df = pd.read_csv(input_file)
     
@@ -54,23 +47,23 @@ samples_df = generate_samples_with_adjustments(input_file)
 output_file= "output_samples.csv"
 samples_df.to_csv(output_file, index=False)
 
-# Function to print the newly generated samples
-def print_generated_samples(output_file):
-    if os.path.exists(output_file):
-        samples_df = pd.read_csv(output_file)
-        print("Generated Samples:")
-        print(samples_df)
-    else:
-        print(f"The file {output_file} does not exist.")
+# # Function to print the newly generated samples
+# def print_generated_samples(output_file):
+#     if os.path.exists(output_file):
+#         samples_df = pd.read_csv(output_file)
+#         print("Generated Samples:")
+#         print(samples_df)
+#     else:
+#         print(f"The file {output_file} does not exist.")
 
-# Print the samples to verify
-print_generated_samples(output_file)
+# # Print the samples to verify
+# print_generated_samples(output_file)
 
 
 # generate samples using smt sampling _method
 
 def samples_LHS(input_file, num_samples=1000):
-    print('in lhs function')
+    print('In LHS function')
 
     # Get the first row of the input file
     first_row = df.iloc[0]
@@ -87,6 +80,9 @@ def samples_LHS(input_file, num_samples=1000):
     # Convert samples to DataFrame
     samples_df = pd.DataFrame(samples, columns=df.columns)
     
+    # Save the generated samples to a new CSV file if needed
+    output_file= "SMT_output_samples.csv"
+    samples_df.to_csv(output_file, index=False)
     return samples_df
 
 def validate_samples(original_value, samples):
@@ -111,7 +107,6 @@ if __name__ == "__main__":
 # Validate results
     original_df = pd.read_csv(input_file)
     first_row = original_df.iloc[0]
-
     validation_results = {}
     for column in samples_df.columns:
         percentage = validate_samples(first_row[column], samples_df[column])
