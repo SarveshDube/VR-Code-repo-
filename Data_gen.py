@@ -44,8 +44,8 @@ input_file = "/Users/sarveshdube/Documents/VR documents/code/filter_CO.csv"
 samples_df = generate_samples_with_adjustments(input_file)
 
 # Save the generated samples to a new CSV file if needed
-output_file= "output_samples.csv"
-samples_df.to_csv(output_file, index=False)
+# output_file= "output_samples.csv"
+# samples_df.to_csv(output_file, index=False)
 
 # # Function to print the newly generated samples
 # def print_generated_samples(output_file):
@@ -63,7 +63,7 @@ samples_df.to_csv(output_file, index=False)
 # generate samples using smt sampling _method
 
 def samples_LHS(input_file, num_samples=1000):
-    print('In LHS function')
+    print('In LHS function: generated 1000 patient data ') # test line 
 
     # Get the first row of the input file
     first_row = df.iloc[0]
