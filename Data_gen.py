@@ -81,7 +81,7 @@ def samples_LHS(input_file, num_samples=1000):
     samples_df = pd.DataFrame(samples, columns=df.columns)
     
     # Save the generated samples to a new CSV file if needed
-    output_file= "SMT_output_samples.csv"
+    output_file= "SMT_op_samples.csv"
     samples_df.to_csv(output_file, index=False)
     return samples_df
 
